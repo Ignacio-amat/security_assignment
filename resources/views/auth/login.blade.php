@@ -24,6 +24,12 @@
                 <x-label for="password" value="{{ __('Password') }}" />
                 <x-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="current-password" />
             </div>
+            @if (session('error'))
+                <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded" style="margin-top: 20px">
+                    <span class="font-bold">{{ __('Oops!') }}</span>
+                    <span>{{ session('error') }}</span>
+                </div>
+            @endif
 
             <div class="block mt-4">
                 <label for="remember_me" class="flex items-center">
@@ -42,6 +48,10 @@
                 <x-button class="ml-4">
                     {{ __('Log in') }}
                 </x-button>
+
+                <a href="{{ url('auth/google') }}" style="margin-top: 0px !important;background: #C84130;color: #ffffff;padding: 8px;border-radius:6px;" class="ml-2">
+                    <strong>Login with Google</strong>
+                </a>
             </div>
         </form>
     </x-authentication-card>
